@@ -36,6 +36,7 @@ ARG REPO_PATH="${CATKIN_WS_DIR}/src/${REPO_NAME}"
 ARG LAUNCH_PATH="${LAUNCH_DIR}/${REPO_NAME}"
 RUN mkdir -p "${REPO_PATH}"
 RUN mkdir -p "${LAUNCH_PATH}"
+RUN mkdir -p "${REPO_PATH}/data"
 WORKDIR "${REPO_PATH}"
 
 # keep some arguments as environment variables
@@ -86,3 +87,5 @@ LABEL org.duckietown.label.module.type="${REPO_NAME}" \
     org.duckietown.label.maintainer="${MAINTAINER}"
 # <== Do not change the code above this line
 # <==================================================
+
+RUN mkdir /data
