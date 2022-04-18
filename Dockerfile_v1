@@ -1,15 +1,13 @@
-FROM docker.io/duckietown/dt-ros-commons:daffy-arm32v7
-
+FROM duckietown/dt-ros-commons:daffy-arm68v8
 # use daffy-arm64v8 if you are using a Duckiebot MOOC Founder's Edition
 
 # define/create repository path
-ARG REPO_NAME="my-ros-duckiebot"
-ARG CATKIN_WS_DIR="/code/catkin_ws"
+ARG REPO_NAME = "my-ros-duckiebot"
+ARG CATKIN_WS_DIR = "/code/catkin_ws"
 ARG REPO_PATH="${CATKIN_WS_DIR}/src/${REPO_NAME}"
 ARG ROS_DISTRO="noetic"
-
+ARG CATKIN_WS_DIR="/code/catkin_ws"
 RUN mkdir -p "${REPO_PATH}"
-#RUN mkdir -p "/code/catkin_ws/src/my-ros-duckiebot"
 WORKDIR "${REPO_PATH}"
 
 # install apt dependencies
@@ -17,12 +15,9 @@ WORKDIR "${REPO_PATH}"
 #RUN apt install ${REPO_PATH}/dependencies-apt.txt
 RUN apt install nano
 
-# update pip
-RUN python3 -m pip install --upgrade pip
-
 # install python3 dependencies
 COPY ./dependencies-py3.txt "${REPO_PATH}/"
-RUN python3 -m pip install -r ${REPO_PATH}/dependencies-py3.txt --verbose
+#RUN python3 -m pip install -r ${REPO_PATH}/dependencies-py3.txt
 
 # copy the source code
 COPY ./packages "${REPO_PATH}/packages"
