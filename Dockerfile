@@ -1,5 +1,5 @@
-FROM docker.io/duckietown/dt-ros-commons:daffy-arm32v7
-
+#FROM docker.io/duckietown/dt-ros-commons:daffy-arm32v7
+FROM docker.io/duckietown/dt-ros-commons:ente-amd64
 # use daffy-arm64v8 if you are using a Duckiebot MOOC Founder's Edition
 
 # define/create repository path
